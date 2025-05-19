@@ -1,0 +1,96 @@
+/* General Styling */
+body {
+  margin: 0;
+   overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.home {
+  background-color: #000;
+  color: white;
+  min-height: 100vh;
+  padding: 0 40px;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+  color: rgb(242, 106, 9);
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: rgb(242, 106, 9);
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 0;
+  flex-wrap: wrap;
+  margin-top: -35px;
+}
+
+.hero-text {
+  max-width: 500px;
+}
+
+.role {
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 40px;
+  margin: 0;
+}
+
+h2 {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+.highlight {
+  color: rgb(242, 106, 9);
+}
+
+/* Image */
+.hero-image img {
+  max-width: 300px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgb(242, 106, 9);
+}
+
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image {
+    margin-top: 15px;
+  }
+}
