@@ -1,6 +1,7 @@
 import React from "react";
 import "./Home.css";
 import profileImage from "./../img/photo_2025-05-19_09-27-43.jpg"
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -10,19 +11,19 @@ const Home = () => {
         <div className="logo">Lidia.</div>
         <ul className="nav-links">
           <li>
-            <a href="#home">Home</a>
+            <Link>Home</Link>
           </li>
           <li>
-            <a href="#about">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li>
-            <a href="#services">Services</a>
+            <Link >Services</Link>
           </li>
           <li>
-            <a href="#portfolio">Portfolio</a>
+            <Link >Portfolio</Link>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <Link >Contact</Link>
           </li>
         </ul>
       </nav>
