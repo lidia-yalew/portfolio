@@ -1,7 +1,7 @@
 /* General Styling */
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -12,12 +12,19 @@ body {
   padding: 0 40px;
 }
 
+@media (max-width: 768px) {
+  .home {
+    padding: 0 20px;
+  }
+}
+
 /* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 0;
+  position: relative;
 }
 
 .logo {
@@ -30,8 +37,6 @@ body {
   list-style: none;
   display: flex;
   gap: 30px;
-  
-
 }
 
 .nav-links li a {
@@ -43,6 +48,14 @@ body {
 
 .nav-links li a:hover {
   color: rgb(242, 106, 9);
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: white;
 }
 
 /* Hero Section */
@@ -84,8 +97,11 @@ h2 {
   max-width: 300px;
   border-radius: 12px;
   box-shadow: 0 8px 16px rgb(242, 106, 9);
+  display: block;
+  margin: 0 auto;
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
   .hero {
     flex-direction: column;
@@ -93,6 +109,26 @@ h2 {
   }
 
   .hero-image {
-    margin-top: 15px;
+    margin-top: 20px;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #111;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    display: none;
+    border-radius: 8px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
   }
 }

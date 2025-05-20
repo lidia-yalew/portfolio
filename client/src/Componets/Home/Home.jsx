@@ -1,29 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Home.css";
-import profileImage from "./../img/photo_2025-05-19_09-27-43.jpg"
+import profileImage from "./../img/photo_2025-05-19_09-27-43.jpg";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
   return (
     <div className="home">
       {/* Navbar */}
       <nav className="navbar">
         <div className="logo">Lidia.</div>
-        <ul className="nav-links">
+        <div className="hamburger" onClick={toggleMenu}>
+          ☰
+        </div>
+        <ul className={`nav-links ${menuOpen ? "active" : ""}`}>
           <li>
-            <Link>Home</Link>
+            <Link to="/" onClick={() => setMenuOpen(false)}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About</Link>
+            <Link to="/about" onClick={() => setMenuOpen(false)}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/services">Services</Link>
+            <Link to="/services" onClick={() => setMenuOpen(false)}>
+              Services
+            </Link>
           </li>
           <li>
-            <Link to="/portfolio">Portfolio</Link>
+            <Link to="/portfolio" onClick={() => setMenuOpen(false)}>
+              Portfolio
+            </Link>
           </li>
           <li>
-            <Link>Contact</Link>
+            <Link to="/contact" onClick={() => setMenuOpen(false)}>
+              Contact
+            </Link>
           </li>
         </ul>
       </nav>
@@ -34,11 +51,13 @@ const Home = () => {
           <h1>
             Hi, I'm <span className="highlight">Lidia Yalew</span>
           </h1>
-          <h2>Information Systems Graduate @ Wollo University</h2>
+          <h2>
+            Bachelor’s Degree Information Systems Graduate @ Wollo University
+          </h2>
           <p className="role">Fullstack Developer</p>
         </div>
         <div className="hero-image">
-          <img src={profileImage} alt="Kevin" />
+          <img src={profileImage} alt="Lidia Yalew" />
         </div>
       </div>
     </div>

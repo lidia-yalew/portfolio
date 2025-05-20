@@ -24,10 +24,11 @@ const AboutMe = () => {
             <Link to="/portfolio">Portfolio</Link>
           </li>
           <li>
-            <Link>Contact</Link>
+            <Link to="/contact">Contact</Link>
           </li>
         </ul>
       </nav>
+
       <div className="about-container">
         <div className="about-image">
           <img src={profileImage} alt="Profile" className="profile-image" />
@@ -43,7 +44,10 @@ const AboutMe = () => {
             teamwork, and delivering smart digital solutions. Currently
             expanding skills through Azure DevOps training.
           </p>
+
+          <button className="btn-download">Download CV</button>
         </div>
+
         <div className="tabs">
           <button
             className={`tab ${activeTab === "skills" ? "active" : ""}`}
@@ -65,10 +69,8 @@ const AboutMe = () => {
           </button>
         </div>
       </div>
-      <div
-        className="
-        tab-content"
-      >
+
+      <div className="tab-content">
         {activeTab === "skills" && (
           <div className="skills">
             <h3>Fullstack Developer using React and Node.js</h3>
@@ -80,7 +82,6 @@ const AboutMe = () => {
                   { name: "CSS", level: 95 },
                   { name: "Bootstrap", level: 80 },
                   { name: "JavaScript", level: 85 },
-
                   { name: "jQuery", level: 80 },
                   { name: "React", level: 90 },
                 ].map((skill) => (
@@ -143,13 +144,46 @@ const AboutMe = () => {
             <div className="timeline-item">
               <div className="timeline-dot"></div>
               <div className="timeline-content">
+                <h3>KIOT Bid Platform</h3>
+                <span>Real-Time Auction Application</span>
+                <p>
+                  Live bidding platform similar to eBay, allowing users to
+                  create auctions and place real-time bids.
+                </p>
+                <h4>Responsibilities:</h4>
+                <ul>
+                  <li>
+                    Designed and implemented real-time bidding with WebSocket
+                    integration.
+                  </li>
+                  <li>Developed front-end components using React.js.</li>
+                  <li>
+                    Built and maintained Node.js backend services and APIs.
+                  </li>
+                  <li>Ensured responsiveness and performance optimization.</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="timeline-item">
+              <div className="timeline-dot"></div>
+              <div className="timeline-content">
                 <h3>Ethiozon</h3>
                 <span>Amazon-style E-commerce Platform</span>
                 <p>
                   Full-stack e-commerce platform inspired by Amazon. Includes
-                  user authentication, product listings, shopping cart, and
-                  checkout functionality.
+                  user authentication, product listings, shopping cart, checkout
+                  functionality and payment.
                 </p>
+                <h4>Responsibilities:</h4>
+                <ul>
+                  <li>Implemented user authentication and authorization.</li>
+                  <li>Developed product catalog and search functionality.</li>
+                  <li>Integrated payment gateway for secure transactions.</li>
+                  <li>
+                    Collaborated with UI/UX designers for a seamless experience.
+                  </li>
+                </ul>
               </div>
             </div>
 
@@ -162,6 +196,13 @@ const AboutMe = () => {
                   Front-end clone of Netflix featuring movie browsing UI and
                   Firebase-based user authentication.
                 </p>
+                <h4>Responsibilities:</h4>
+                <ul>
+                  <li>Designed responsive UI mimicking Netflix's interface.</li>
+                  <li>Integrated TMDB API for dynamic movie data fetching.</li>
+                  <li>Implemented Firebase authentication and database.</li>
+                  <li>Handled state management using React hooks.</li>
+                </ul>
               </div>
             </div>
 
@@ -171,21 +212,20 @@ const AboutMe = () => {
                 <h3>Amazon Clone</h3>
                 <span>React</span>
                 <p>
-                  Frontend clone of Amazon with search, product listing, and
+                  Frontend clone of Amazon with search, product listing and
                   basic shopping cart UI.
                 </p>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Bid Platform</h3>
-                <span>Real-Time Auction Application</span>
-                <p>
-                  Live bidding platform similar to eBay, allowing users to
-                  create auctions and place real-time bids.
-                </p>
+                <h4>Responsibilities:</h4>
+                <ul>
+                  <li>Built reusable React components for product listings.</li>
+                  <li>Implemented search functionality with filters.</li>
+                  <li>
+                    Developed shopping cart UI with basic add/remove features.
+                  </li>
+                  <li>
+                    Ensured cross-browser compatibility and responsive design.
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
