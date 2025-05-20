@@ -17,13 +17,13 @@ const Home = () => {
             <Link to="/about">About</Link>
           </li>
           <li>
-            <Link >Services</Link>
+            <Link to="/services">Services</Link>
           </li>
           <li>
-            <Link >Portfolio</Link>
+            <Link to="/portfolio">Portfolio</Link>
           </li>
           <li>
-            <Link >Contact</Link>
+            <Link>Contact</Link>
           </li>
         </ul>
       </nav>
@@ -31,11 +31,11 @@ const Home = () => {
       {/* Hero Section */}
       <div className="hero">
         <div className="hero-text">
-          <p className="role">Fullstack Developer</p>
           <h1>
             Hi, I'm <span className="highlight">Lidia Yalew</span>
           </h1>
-          <h2>Information Systems Graduate from Wollo University</h2>
+          <h2>Information Systems Graduate @ Wollo University</h2>
+          <p className="role">Fullstack Developer</p>
         </div>
         <div className="hero-image">
           <img src={profileImage} alt="Kevin" />
