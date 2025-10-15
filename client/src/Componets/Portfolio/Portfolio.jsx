@@ -7,13 +7,13 @@ const projects = [
     title: "Ethiozon",
     description:
       "Amazon-style shopping platform built using MERN stack with full user, product, and order management.",
-    link: "https://github.com/yourusername/ethiozon",
+    link: "https://github.com/lidia-yalew/Ethiozon",
   },
   {
     title: "Netflix Clone",
     description:
       "Movie streaming UI with Firebase authentication and TMDB integration.",
-    link: "https://github.com/yourusername/netflix-clone",
+    link: "https://github.com/lidia-yalew/Netflix",
   },
   {
     title: "Amazon Clone",

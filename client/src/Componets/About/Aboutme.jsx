@@ -1,34 +1,14 @@
 import React, { useState } from "react";
 import "./AboutMe.css";
-import profileImage from "./../img/6A1A9679.JPG";
-import { Link } from "react-router-dom";
+import profileImage from "./../img/lid.jpg";
+import Nav from "../Nav";
 
 const AboutMe = () => {
   const [activeTab, setActiveTab] = useState("skills");
 
   return (
     <div className="about-containers">
-      <nav className="navbar ">
-        <div className="logo">Lidia.</div>
-        <ul className="nav-links">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/services">Services</Link>
-          </li>
-          <li>
-            <Link to="/portfolio">Portfolio</Link>
-          </li>
-          <li>
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
-
+<Nav/>
       <div className="about-container">
         <div className="about-image">
           <img src={profileImage} alt="Profile" className="profile-image" />
@@ -72,68 +52,73 @@ const AboutMe = () => {
 
       <div className="tab-content">
         {activeTab === "skills" && (
-          <div className="skills">
-            <h3>Fullstack Developer using React and Node.js</h3>
-            <div className="skil">
-              <div className="skills-section">
-                <h2>Frontend</h2>
-                {[
-                  { name: "HTML", level: 95 },
-                  { name: "CSS", level: 95 },
-                  { name: "Bootstrap", level: 80 },
-                  { name: "JavaScript", level: 85 },
-                  { name: "jQuery", level: 80 },
-                  { name: "React", level: 90 },
-                ].map((skill) => (
-                  <div className="skill-bar" key={skill.name}>
-                    <span>{skill.name}</span>
-                    <div className="bar-bg">
-                      <div
-                        className="bar-fill"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+          <div className="try">
+            <div className="skills">
+              <h3>Fullstack Developer using React and Node.js</h3>
 
-              <div className="skills-section">
-                <h2>Backend</h2>
-                {[
-                  { name: "PHP", level: 60 },
-                  { name: "Node.js", level: 85 },
-                  { name: "MySQL", level: 75 },
-                ].map((skill) => (
-                  <div className="skill-bar" key={skill.name}>
-                    <span>{skill.name}</span>
-                    <div className="bar-bg">
-                      <div
-                        className="bar-fill"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+              <div className="skil">
+                <div className="skills-section">
+                  <h2>Frontend</h2>
+                  {[
+                    { name: "HTML", level: 85 },
+                    { name: "CSS", level: 95 },
+                    { name: "Bootstrap", level: 70 },
+                    { name: "telwendcss", level: 90 },
+                    { name: "JavaScript", level: 95 },
+                    { name: "jQuery", level: 70 },
+                    { name: "React", level: 96 },
+                  ].map((skill) => (
+                    <div className="skill-bar" key={skill.name}>
+                      <span>{skill.name}</span>
+                      <div className="bar-bg">
+                        <div
+                          className="bar-fill"
+                          style={{ width: `${skill.level}%` }}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
+                  ))}
+                </div>
 
-              <div className="skills-section">
-                <h3>Soft Skills</h3>
-                {[
-                  { name: "Communication", level: 99 },
-                  { name: "Adaptability", level: 95 },
-                  { name: "Confidence", level: 90 },
-                  { name: "Fast Learner", level: 99 },
-                ].map((skill) => (
-                  <div className="skill-bar" key={skill.name}>
-                    <span>{skill.name}</span>
-                    <div className="bar-bg">
-                      <div
-                        className="bar-fill"
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
+                <div className="skills-section">
+                  <h2>Backend</h2>
+                  {[
+                    { name: "PHP", level: 60 },
+                    { name: "Node.js", level: 85 },
+                    { name: "MySQL", level: 70 },
+                    { name: "MongoDB", level: 70 },
+                  ].map((skill) => (
+                    <div className="skill-bar" key={skill.name}>
+                      <span>{skill.name}</span>
+                      <div className="bar-bg">
+                        <div
+                          className="bar-fill"
+                          style={{ width: `${skill.level}%` }}
+                        ></div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+
+                <div className="skills-section">
+                  <h3>Soft Skills</h3>
+                  {[
+                    { name: "Communication", level: 100 },
+                    { name: "Adaptability", level: 99 },
+                    { name: "Confidence", level: 99 },
+                    { name: "Fast Learner", level: 99 },
+                  ].map((skill) => (
+                    <div className="skill-bar" key={skill.name}>
+                      <span>{skill.name}</span>
+                      <div className="bar-bg">
+                        <div
+                          className="bar-fill"
+                          style={{ width: `${skill.level}%` }}
+                        ></div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
