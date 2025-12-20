@@ -1,22 +1,68 @@
-import React, { useState } from "react";
-import "./AboutMe.css";
-import profileImage from "./../img/lid.jpg";
+import React, { useEffect, useState } from "react";
+import profileImage from "./../img/liai.jpg";
 import Nav from "../Nav";
+import cv from "./../img/Lidia-yalewCV.pdf";
 
 const AboutMe = () => {
-  const [activeTab, setActiveTab] = useState("skills");
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setLoaded(true), 100);
+  }, []);
 
   return (
-    <div className="about-containers">
-<Nav/>
-      <div className="about-container">
-        <div className="about-image">
-          <img src={profileImage} alt="Profile" className="profile-image" />
+    <div className="bg-black text-white w-screen h-screen fixed inset-0 overflow-hidden">
+      <Nav />
+
+      <div className="sm:mt-20 max-w-6xl mx-auto px-4 md:px-16 py-8 flex flex-col md:flex-row items-center md:items-start gap-8 mt-15">
+        {/* Profile Image - Enhanced with animations */}
+        <div className="flex justify-center md:justify-start">
+          <div className="relative">
+            {/* Animated border effect */}
+            <div className="absolute -inset-4 bg-gradient-to-br from-orange-500/20 to-amber-500/10 rounded-2xl blur-xl animate-pulse"></div>
+
+            {/* Floating image container */}
+            <div
+              className={`relative transform transition-all duration-1500 ${
+                loaded
+                  ? "translate-y-0 opacity-100 scale-100"
+                  : "translate-y-20 opacity-0 scale-95"
+              }`}
+            >
+              <div className="relative group cursor-pointer">
+                {/* Glow effect on hover */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-orange-600 to-amber-500 rounded-lg blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+
+                {/* Main image */}
+                <img
+                  src={profileImage}
+                  alt="Profile"
+                  className="relative rounded-lg w-50 h-60 md:w-67 md:h-80 object-cover border-2 border-orange-500 shadow-lg transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-orange-500/30 group-hover:rotate-1"
+                />
+
+                {/* Corner decorations on hover */}
+                <div className="absolute -top-1 -left-1 w-4 h-4 border-t border-l border-orange-400 rounded-tl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute -top-1 -right-1 w-4 h-4 border-t border-r border-orange-400 rounded-tr opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100"></div>
+                <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b border-l border-orange-400 rounded-bl opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200"></div>
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b border-r border-orange-400 rounded-br opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-300"></div>
+              </div>
+
+              {/* Floating dot animation */}
+              <div className="absolute -top-2 -right-2 w-3 h-3 bg-orange-400 rounded-full animate-pulse"></div>
+              <div
+                className="absolute -bottom-2 -left-2 w-4 h-4 bg-amber-400/50 rounded-full animate-bounce"
+                style={{ animationDuration: "2s" }}
+              ></div>
+            </div>
+          </div>
         </div>
 
-        <div className="about-content">
-          <h1 className="about-title">About Me</h1>
-          <p className="about-description">
+        {/* About Content - Kept exactly as original */}
+        <div className="flex flex-col gap-4 max-w-xl text-center md:text-left">
+          <h1 className="text-3xl md:text-4xl font-bold text-orange-500">
+            About Me
+          </h1>
+          <p className="text-gray-300 text-base md:text-lg leading-relaxed">
             Highly motivated technology enthusiast with solid web development
             skills and growing expertise in project coordination. Experienced in
             leading and developing full-stack projects using React.js and
@@ -25,219 +71,14 @@ const AboutMe = () => {
             expanding skills through Azure DevOps training.
           </p>
 
-          <button className="btn-download">Download CV</button>
+          <a
+            href={cv}
+            download="Lidia-Valew-CV.pdf"
+            className="inline-block bg-orange-500 text-black font-semibold px-6 py-2 rounded-md hover:bg-orange-600 transition-colors text-center transform transition-transform hover:scale-105 duration-300"
+          >
+            Download CV
+          </a>
         </div>
-
-        <div className="tabs">
-          <button
-            className={`tab ${activeTab === "skills" ? "active" : ""}`}
-            onClick={() => setActiveTab("skills")}
-          >
-            Skills
-          </button>
-          <button
-            className={`tab ${activeTab === "experience" ? "active" : ""}`}
-            onClick={() => setActiveTab("experience")}
-          >
-            Experience
-          </button>
-          <button
-            className={`tab ${activeTab === "education" ? "active" : ""}`}
-            onClick={() => setActiveTab("education")}
-          >
-            Education
-          </button>
-        </div>
-      </div>
-
-      <div className="tab-content">
-        {activeTab === "skills" && (
-          <div className="try">
-            <div className="skills">
-              <h3>Fullstack Developer using React and Node.js</h3>
-
-              <div className="skil">
-                <div className="skills-section">
-                  <h2>Frontend</h2>
-                  {[
-                    { name: "HTML", level: 85 },
-                    { name: "CSS", level: 95 },
-                    { name: "Bootstrap", level: 70 },
-                    { name: "telwendcss", level: 90 },
-                    { name: "JavaScript", level: 95 },
-                    { name: "jQuery", level: 70 },
-                    { name: "React", level: 96 },
-                  ].map((skill) => (
-                    <div className="skill-bar" key={skill.name}>
-                      <span>{skill.name}</span>
-                      <div className="bar-bg">
-                        <div
-                          className="bar-fill"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="skills-section">
-                  <h2>Backend</h2>
-                  {[
-                    { name: "PHP", level: 60 },
-                    { name: "Node.js", level: 85 },
-                    { name: "MySQL", level: 70 },
-                    { name: "MongoDB", level: 70 },
-                  ].map((skill) => (
-                    <div className="skill-bar" key={skill.name}>
-                      <span>{skill.name}</span>
-                      <div className="bar-bg">
-                        <div
-                          className="bar-fill"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="skills-section">
-                  <h3>Soft Skills</h3>
-                  {[
-                    { name: "Communication", level: 100 },
-                    { name: "Adaptability", level: 99 },
-                    { name: "Confidence", level: 99 },
-                    { name: "Fast Learner", level: 99 },
-                  ].map((skill) => (
-                    <div className="skill-bar" key={skill.name}>
-                      <span>{skill.name}</span>
-                      <div className="bar-bg">
-                        <div
-                          className="bar-fill"
-                          style={{ width: `${skill.level}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "experience" && (
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>KIOT Bid Platform</h3>
-                <span>Real-Time Auction Application</span>
-                <p>
-                  Live bidding platform similar to eBay, allowing users to
-                  create auctions and place real-time bids.
-                </p>
-                <h4>Responsibilities:</h4>
-                <ul>
-                  <li>
-                    Designed and implemented real-time bidding with WebSocket
-                    integration.
-                  </li>
-                  <li>Developed front-end components using React.js.</li>
-                  <li>
-                    Built and maintained Node.js backend services and APIs.
-                  </li>
-                  <li>Ensured responsiveness and performance optimization.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Ethiozon</h3>
-                <span>Amazon-style E-commerce Platform</span>
-                <p>
-                  Full-stack e-commerce platform inspired by Amazon. Includes
-                  user authentication, product listings, shopping cart, checkout
-                  functionality and payment.
-                </p>
-                <h4>Responsibilities:</h4>
-                <ul>
-                  <li>Implemented user authentication and authorization.</li>
-                  <li>Developed product catalog and search functionality.</li>
-                  <li>Integrated payment gateway for secure transactions.</li>
-                  <li>
-                    Collaborated with UI/UX designers for a seamless experience.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Netflix Clone</h3>
-                <span>React, Firebase, TMDB API</span>
-                <p>
-                  Front-end clone of Netflix featuring movie browsing UI and
-                  Firebase-based user authentication.
-                </p>
-                <h4>Responsibilities:</h4>
-                <ul>
-                  <li>Designed responsive UI mimicking Netflix's interface.</li>
-                  <li>Integrated TMDB API for dynamic movie data fetching.</li>
-                  <li>Implemented Firebase authentication and database.</li>
-                  <li>Handled state management using React hooks.</li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Amazon Clone</h3>
-                <span>React</span>
-                <p>
-                  Frontend clone of Amazon with search, product listing and
-                  basic shopping cart UI.
-                </p>
-                <h4>Responsibilities:</h4>
-                <ul>
-                  <li>Built reusable React components for product listings.</li>
-                  <li>Implemented search functionality with filters.</li>
-                  <li>
-                    Developed shopping cart UI with basic add/remove features.
-                  </li>
-                  <li>
-                    Ensured cross-browser compatibility and responsive design.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {activeTab === "education" && (
-          <div className="timeline">
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Bachelor’s Degree in Information Systems</h3>
-                <span>Wollo University</span>
-                <p>Graduated: February 2025</p>
-                <p>CGPA: 3.61 / 4.0</p>
-              </div>
-            </div>
-
-            <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h3>Microsoft Azure DevOps Training</h3>
-                <span>AppFactory Academy @ Wollo University</span>
-                <p>Ongoing</p>
-              </div>
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
