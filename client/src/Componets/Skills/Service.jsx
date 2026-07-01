@@ -18,6 +18,9 @@ import {
   FiZap,
   FiServer,
   FiDatabase,
+  FiStar,
+  FiBriefcase,
+  FiAward as FiAwardIcon,
 } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
@@ -25,37 +28,39 @@ import { Link } from "react-router-dom";
 const services = [
   {
     icon: <FiCode className="text-3xl" />,
-    title: "Web Development",
+    title: "Fullstack Web Development",
     desc: "Building full-stack websites using modern technologies.",
+    gradient: "from-blue-500 to-cyan-500",
   },
   {
     icon: <FiLayout className="text-3xl" />,
-    title: "UI/UX Design",
+    title: "UI/UX",
     desc: "Crafting beautiful and user-friendly interfaces.",
+    gradient: "from-purple-500 to-pink-500",
   },
 ];
 
 const frontendSkills = [
-  { name: "HTML", level: 85, icon: <FiCode /> },
-  { name: "CSS", level: 95, icon: <FiCode /> },
-  { name: "Bootstrap", level: 70, icon: <FiCode /> },
-  { name: "TailwindCSS", level: 90, icon: <FiCode /> },
-  { name: "JavaScript", level: 95, icon: <FiCode /> },
-  { name: "React", level: 96, icon: <FiCode /> },
+  { name: "HTML", level: 85, icon: <FiCode />, color: "from-orange-400 to-orange-600" },
+  { name: "CSS", level: 95, icon: <FiCode />, color: "from-blue-400 to-blue-600" },
+  { name: "Bootstrap", level: 70, icon: <FiCode />, color: "from-purple-400 to-purple-600" },
+  { name: "TailwindCSS", level: 90, icon: <FiCode />, color: "from-cyan-400 to-cyan-600" },
+  { name: "JavaScript", level: 95, icon: <FiCode />, color: "from-yellow-400 to-yellow-600" },
+  { name: "React", level: 96, icon: <FiCode />, color: "from-sky-400 to-blue-600" },
 ];
 
 const backendSkills = [
-  { name: "PHP", level: 50, icon: <FiServer /> },
-  { name: "Node.js", level: 80, icon: <FiServer /> },
-  { name: "MySQL", level: 70, icon: <FiDatabase /> },
-  { name: "postgress", level: 75, icon: <FiDatabase /> },
+  { name: "PHP", level: 50, icon: <FiServer />, color: "from-indigo-400 to-indigo-600" },
+  { name: "Node.js", level: 80, icon: <FiServer />, color: "from-green-400 to-green-600" },
+  { name: "MySQL", level: 70, icon: <FiDatabase />, color: "from-blue-400 to-blue-600" },
+  { name: "PostgreSQL", level: 75, icon: <FiDatabase />, color: "from-sky-400 to-sky-600" },
 ];
 
 const softSkills = [
-  { name: "Communication", level: 100, icon: <FiUsers /> },
-  { name: "Adaptability", level: 99, icon: <FiTrendingUp /> },
-  { name: "Confidence", level: 99, icon: <FiTarget /> },
-  { name: "Fast Learner", level: 99, icon: <FiZap /> },
+  { name: "Communication", level: 100, icon: <FiUsers />, color: "from-pink-400 to-rose-500" },
+  { name: "Adaptability", level: 99, icon: <FiTrendingUp />, color: "from-teal-400 to-teal-600" },
+  { name: "Confidence", level: 99, icon: <FiTarget />, color: "from-red-400 to-red-600" },
+  { name: "Fast Learner", level: 99, icon: <FiZap />, color: "from-yellow-400 to-amber-600" },
 ];
 
 // CV WORK EXPERIENCE
@@ -66,6 +71,7 @@ const workExperience = [
     company: "Begize OptiMAX",
     period: "05/2025 -- 10/2025",
     location: "Addis Ababa",
+    type: "Full-time",
     responsibilities: [
       "ERP System Trainer & Support Specialist: Conduct training sessions for employees on ERP software usage.",
       "Technical Support: Provide ongoing assistance and troubleshooting for ERP-related issues.",
@@ -79,6 +85,7 @@ const workExperience = [
     company: "App Factory Academy @ Wollo University",
     period: "Sep 2024 -- Feb 2025",
     location: "Kombolcha",
+    type: "Contract",
     responsibilities: [
       "Train and mentor female students in web development and real-world project execution.",
       "Deliver lessons on React.js, Node.js, Git, and modern software development practices.",
@@ -88,9 +95,10 @@ const workExperience = [
   {
     id: "experience-freelance",
     title: "Full-Stack Web Developer",
-    company: "Personal Projects and clients projects",
+    company: "Personal Projects & Client Projects",
     period: "2023 -- Present",
     location: "Remote",
+    type: "Freelance",
     responsibilities: [
       "Develop full-stack applications using React.js, Node.js, Express, MySQL/pg, and Tailwind CSS.",
       "Design responsive UI/UX interfaces and build backend APIs with authentication.",
@@ -107,6 +115,7 @@ const education = [
     institution: "Wollo University",
     details: "Graduated: February 2025, CGPA: 3.61 / 4.0",
     icon: <FiBook />,
+    color: "from-blue-500 to-indigo-500",
   },
   {
     id: "edu-azure",
@@ -114,10 +123,9 @@ const education = [
     institution: "AppFactory Academy @ Wollo University",
     details: "Ongoing",
     icon: <FiCloud />,
+    color: "from-sky-500 to-blue-500",
   },
 ];
-
-
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("skills");
@@ -162,7 +170,7 @@ const Services = () => {
 
       {/* Animated background elements */}
       <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <div
             key={i}
             className="absolute w-1 h-1 bg-orange-400/20 rounded-full animate-float"
@@ -178,34 +186,49 @@ const Services = () => {
         <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-amber-500/2 rounded-full blur-3xl animate-pulse delay-1500"></div>
       </div>
 
+      {/* Hero Section */}
+      <div className="relative px-4 md:px-16 pt-32 pb-16">
+        <div className="max-w-4xl mx-auto text-center">
+          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-6">
+            <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
+            <span className="text-orange-400 text-sm font-medium">Available for hire</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
+            My Skills & Experience
+          </h1>
+          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+            A showcase of my technical expertise, professional journey, and educational background
+          </p>
+        </div>
+      </div>
+
       {/* Tabs Section */}
-      <div className="px-4 md:px-16 py-8 pt-24">
+      <div className="px-4 md:px-16 py-8">
         <div className="max-w-6xl mx-auto">
           {/* Tab Buttons */}
           <div
-            className={`flex justify-center gap-4 mb-12 flex-wrap transform transition-all duration-1000 delay-300 ${
+            className={`flex justify-center gap-3 mb-12 flex-wrap transform transition-all duration-1000 delay-300 ${
               animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
           >
-            {["skills", "experience", "education"].map((tab) => (
+            {[
+              { id: "skills", label: "Technical Skills", icon: <FiCode /> },
+              { id: "experience", label: "Work Experience", icon: <FiBriefcase /> },
+              { id: "education", label: "Education", icon: <FiAwardIcon /> },
+            ].map((tab) => (
               <button
-                key={tab}
-                className={`group relative px-8 py-4 rounded-full font-semibold transition-all duration-500 overflow-hidden ${
-                  activeTab === tab
-                    ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-2xl shadow-orange-500/40"
-                    : "bg-gray-900/50 text-gray-400 hover:text-white border border-gray-800 hover:border-orange-500/50"
+                key={tab.id}
+                className={`group relative px-6 py-3 rounded-xl font-medium transition-all duration-500 ${
+                  activeTab === tab.id
+                    ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-xl shadow-orange-500/30"
+                    : "bg-gray-900/50 text-gray-400 hover:text-white border border-gray-800 hover:border-orange-500/50 hover:bg-gray-800/50"
                 }`}
-                onClick={() => handleTabChange(tab)}
+                onClick={() => handleTabChange(tab.id)}
               >
-                <span className="relative z-10 flex items-center gap-3">
-                  {tab === "skills" && <FiCode />}
-                  {tab === "experience" && <FiCalendar />}
-                  {tab === "education" && <FiBook />}
-                  {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                <span className="relative z-10 flex items-center gap-2">
+                  {tab.icon}
+                  {tab.label}
                 </span>
-                {activeTab === tab && (
-                  <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-                )}
               </button>
             ))}
           </div>
@@ -252,10 +275,10 @@ const Services = () => {
 // Skills Tab Component
 function SkillsTab({ skillFilter, setSkillFilter, animate }) {
   const filterButtons = [
-    { id: "all", label: "All Skills" },
-    { id: "frontend", label: "Frontend" },
-    { id: "backend", label: "Backend" },
-    { id: "soft", label: "Soft Skills" },
+    { id: "all", label: "All Skills", icon: <FiStar className="w-3 h-3" /> },
+    { id: "frontend", label: "Frontend", icon: <FiCode className="w-3 h-3" /> },
+    { id: "backend", label: "Backend", icon: <FiServer className="w-3 h-3" /> },
+    { id: "soft", label: "Soft Skills", icon: <FiUsers className="w-3 h-3" /> },
   ];
 
   return (
@@ -266,21 +289,18 @@ function SkillsTab({ skillFilter, setSkillFilter, animate }) {
           animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
         }`}
       >
-        {filterButtons.map((filter, index) => (
+        {filterButtons.map((filter) => (
           <button
             key={filter.id}
-            className={`group relative px-6 py-3 rounded-full text-sm font-medium transition-all duration-500 overflow-hidden ${
+            className={`group relative px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-500 flex items-center gap-2 ${
               skillFilter === filter.id
-                ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-lg"
-                : "bg-gray-900/50 text-gray-400 hover:text-white border border-gray-800 hover:border-orange-500/50"
+                ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-lg shadow-orange-500/20"
+                : "bg-gray-900/50 text-gray-400 hover:text-white border border-gray-800 hover:border-orange-500/50 hover:bg-gray-800/50"
             }`}
             onClick={() => setSkillFilter(filter.id)}
-            style={{ transitionDelay: `${500 + index * 100}ms` }}
           >
-            <span className="relative z-10">{filter.label}</span>
-            {skillFilter === filter.id && (
-              <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-            )}
+            {filter.icon}
+            {filter.label}
           </button>
         ))}
       </div>
@@ -337,9 +357,6 @@ function SkillsTab({ skillFilter, setSkillFilter, animate }) {
 function ExperienceTab({ animate }) {
   return (
     <div className="relative">
-      {/* Timeline line */}
-      <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-orange-500/20 via-orange-500/50 to-transparent hidden md:block"></div>
-
       <div className="space-y-8">
         {workExperience.map((exp, index) => (
           <TimelineItem
@@ -363,28 +380,29 @@ function EducationTab({ animate }) {
         {education.map((edu, index) => (
           <div
             key={edu.id}
-            className={`bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-6 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/10 transform ${
+            className={`group bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-8 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/10 transform ${
               animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}
             style={{ transitionDelay: `${800 + index * 200}ms` }}
           >
-            <div className="flex items-start gap-4">
-              <div className="bg-gradient-to-br from-orange-500/20 to-amber-500/10 p-4 rounded-xl group-hover:bg-orange-500/30 transition-colors">
-                <div className="text-orange-500 text-xl">{edu.icon}</div>
+            <div className="flex items-start gap-5">
+              <div className={`bg-gradient-to-br ${edu.color} p-4 rounded-xl shadow-lg flex-shrink-0`}>
+                <div className="text-white text-xl">{edu.icon}</div>
               </div>
-              <div className="flex-1">
+              <div className="flex-1 min-w-0">
                 <h3 className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent font-bold text-xl mb-1">
                   {edu.degree}
                 </h3>
                 <p className="text-gray-300 font-medium">{edu.institution}</p>
-                <p className="text-orange-300/80 mt-2 text-sm">{edu.details}</p>
+                <div className="mt-3 inline-flex items-center gap-2 text-sm bg-gray-800/50 px-4 py-2 rounded-full border border-gray-700">
+                  <FiCalendar className="text-orange-400" />
+                  <span className="text-gray-400">{edu.details}</span>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
-
-      
     </div>
   );
 }
@@ -393,19 +411,24 @@ function EducationTab({ animate }) {
 function ServicesSection({ animate }) {
   return (
     <div
-      className={`px-4 md:px-16 py-16 bg-gradient-to-b from-black to-gray-900/30 transform transition-all duration-1000 delay-300 ${
+      className={`px-4 md:px-16 py-20 bg-gradient-to-b from-black via-gray-900/10 to-black transform transition-all duration-1000 delay-300 ${
         animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
       }`}
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4">
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-14">
+          <div className="inline-block mb-3">
+            <span className="bg-orange-500/10 text-orange-400 text-sm font-medium px-4 py-1.5 rounded-full border border-orange-500/20">
+              What I Do
+            </span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
               My Services
             </span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            I provide comprehensive development solutions tailored to your needs
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Comprehensive development solutions tailored to your needs
           </p>
         </div>
 
@@ -413,28 +436,24 @@ function ServicesSection({ animate }) {
           {services.map((service, index) => (
             <div
               key={index}
-              className={`group relative bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-8 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform ${
+              className={`group relative bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-8 rounded-2xl border border-gray-800 hover:border-transparent transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/20 transform ${
                 animate
                   ? "translate-y-0 opacity-100"
                   : "translate-y-10 opacity-0"
               }`}
-              style={{ transitionDelay: `${500 + index * 200}ms` }}
+              style={{ transitionDelay: `${500 + index * 150}ms` }}
             >
-              {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
+              {/* Background gradient glow */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-500`}></div>
+              
               <div className="relative z-10">
-                <div className="bg-gradient-to-br from-orange-500/10 to-amber-500/5 p-4 rounded-xl inline-block mb-6 group-hover:scale-110 transition-transform duration-500">
-                  <div className="text-orange-500">{service.icon}</div>
+                <div className={`bg-gradient-to-br ${service.gradient} p-4 rounded-xl inline-block mb-5 group-hover:scale-110 transition-transform duration-500 shadow-lg`}>
+                  <div className="text-white">{service.icon}</div>
                 </div>
-                <h3 className="font-bold text-xl mb-4 text-white">
+                <h3 className="font-bold text-xl mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-orange-300 group-hover:bg-clip-text transition-all duration-500">
                   {service.title}
                 </h3>
-                <p className="text-gray-300 mb-6">{service.desc}</p>
-                <span className="inline-flex items-center gap-2 text-orange-500 font-medium text-sm">
-                  Available for hire
-                  <FiChevronUp className="w-4 h-4 transform rotate-90 group-hover:translate-x-1 transition-transform" />
-                </span>
+                <p className="text-gray-400 leading-relaxed">{service.desc}</p>
               </div>
             </div>
           ))}
@@ -448,31 +467,39 @@ function ServicesSection({ animate }) {
 function ContactSection({ animate }) {
   return (
     <div
-      className={`px-4 md:px-16 py-16 text-center transform transition-all duration-1000 delay-600 ${
+      className={`px-4 md:px-16 py-20 text-center transform transition-all duration-1000 delay-600 ${
         animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
       }`}
       id="contact"
     >
-      <div className="max-w-2xl mx-auto">
-        <h2 className="text-4xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
-            Let's Work Together
-          </span>
-        </h2>
-        <p className="text-gray-400 mb-8 text-lg">
-          Have a project in mind? I'd love to hear about it. Send me a message
-          and let's create something amazing.
-        </p>
-        <Link
-          to="/contact"
-          className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all duration-500 overflow-hidden"
-        >
-          <span className="relative z-10 flex items-center gap-3">
-            <FiMail className="w-5 h-5" />
-            Get In Touch
-          </span>
-          <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-        </Link>
+      <div className="max-w-3xl mx-auto">
+        <div className="bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-12 rounded-3xl border border-gray-800 relative overflow-hidden">
+          {/* Background decoration */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl"></div>
+          
+          <div className="relative z-10">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
+                Let's Work Together
+              </span>
+            </h2>
+            <p className="text-gray-400 mb-8 text-lg">
+              Have a project in mind? I'd love to hear about it. Send me a message
+              and let's create something amazing together.
+            </p>
+            <Link
+              to="/contact"
+              className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all duration-500 overflow-hidden"
+            >
+              <span className="relative z-10 flex items-center gap-3">
+                <FiMail className="w-5 h-5" />
+                Get In Touch
+              </span>
+              <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -482,46 +509,47 @@ function ContactSection({ animate }) {
 function SkillSection({ title, skills, showAll = false, animate, delay = 0 }) {
   return (
     <div
-      className={`bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-6 rounded-2xl border border-gray-800 hover:border-orange-500/30 transition-all duration-500 h-full transform ${
+      className={`bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-6 rounded-2xl border border-gray-800 hover:border-orange-500/30 transition-all duration-500 hover:shadow-lg hover:shadow-orange-500/5 h-full transform ${
         animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       <div className="flex items-center justify-between mb-6">
-        <h2 className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent font-bold text-xl">
+        <h3 className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent font-bold text-xl">
           {title}
-        </h2>
+        </h3>
         {showAll && (
-          <span className="text-gray-400 text-sm">{skills.length} skills</span>
+          <span className="text-gray-500 text-sm bg-gray-800/50 px-3 py-1 rounded-full">
+            {skills.length} skills
+          </span>
         )}
       </div>
-      <div className="space-y-6">
+      <div className="space-y-5">
         {skills.map((skill, index) => (
           <div
             key={skill.name}
             className="group"
-            style={{ transitionDelay: `${delay + index * 100}ms` }}
+            style={{ transitionDelay: `${delay + index * 80}ms` }}
           >
-            <div className="flex items-center justify-between mb-3">
-              <div className="flex items-center gap-3">
-                <div className="text-orange-500">{skill.icon}</div>
-                <span className="font-medium text-white">{skill.name}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  Proficiency:
-                </span>
-                <span className="font-bold text-orange-500">
-                  {skill.level}%
+            <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center gap-2.5">
+                <div className={`bg-gradient-to-r ${skill.color} p-1.5 rounded-lg text-white text-sm`}>
+                  {skill.icon}
+                </div>
+                <span className="font-medium text-gray-200 group-hover:text-white transition-colors">
+                  {skill.name}
                 </span>
               </div>
+              <span className="font-bold text-orange-400 text-sm">
+                {skill.level}%
+              </span>
             </div>
-            <div className="relative w-full bg-gray-800/50 h-2.5 rounded-full overflow-hidden">
+            <div className="relative w-full bg-gray-800/50 h-2 rounded-full overflow-hidden">
               <div
-                className="absolute inset-y-0 left-0 bg-gradient-to-r from-orange-500 to-amber-500 h-2.5 rounded-full transition-all duration-1500 ease-out group-hover:from-orange-400 group-hover:to-amber-400"
+                className={`absolute inset-y-0 left-0 bg-gradient-to-r ${skill.color} h-2 rounded-full transition-all duration-1000 ease-out group-hover:brightness-110`}
                 style={{ width: `${skill.level}%` }}
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-shimmer"></div>
               </div>
             </div>
           </div>
@@ -536,6 +564,7 @@ function TimelineItem({
   company,
   period,
   location,
+  type,
   responsibilities,
   index,
   animate,
@@ -548,31 +577,39 @@ function TimelineItem({
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      <div className="flex flex-col md:flex-row md:items-center gap-6">
-        {/* Dot and line */}
-        <div className="hidden md:flex items-center justify-center w-16">
+      <div className="flex flex-col md:flex-row md:items-start gap-6">
+        {/* Timeline icon */}
+        <div className="hidden md:flex items-center justify-center w-16 flex-shrink-0">
           <div className="relative">
-            <div className="w-4 h-4 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full border-4 border-black group-hover:scale-125 transition-transform duration-500 z-10"></div>
-            <div className="absolute inset-0 w-4 h-4 bg-orange-500 rounded-full animate-ping opacity-20"></div>
+            <div className="w-5 h-5 bg-gradient-to-r from-orange-500 to-amber-500 rounded-full border-4 border-black shadow-lg shadow-orange-500/20 group-hover:scale-125 transition-transform duration-500 z-10"></div>
+            <div className="absolute inset-0 w-5 h-5 bg-orange-500 rounded-full animate-ping opacity-20"></div>
+            {index < workExperience.length - 1 && (
+              <div className="absolute top-5 left-1/2 transform -translate-x-1/2 w-0.5 h-16 bg-gradient-to-b from-orange-500/50 to-transparent"></div>
+            )}
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex-1 bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-6 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-orange-500/10">
+        <div className="flex-1 bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-6 rounded-2xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 hover:scale-[1.02]">
           <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-4">
             <div>
-              <h3 className="bg-gradient-to-r from-orange-400 to-amber-500 bg-clip-text text-transparent font-bold text-xl">
+              <h3 className="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-orange-400 group-hover:to-amber-500 group-hover:bg-clip-text transition-all duration-500">
                 {title}
               </h3>
-              <p className="text-gray-300 font-medium mt-1">{company}</p>
+              <p className="text-gray-400 font-medium mt-1">{company}</p>
             </div>
-            <div className="text-right">
-              <span className="inline-flex items-center gap-2 text-sm bg-gradient-to-r from-orange-500/20 to-amber-500/10 text-orange-300 px-4 py-2 rounded-full border border-orange-500/30">
-                <FiCalendar />
+            <div className="flex flex-col items-start md:items-end gap-2">
+              <span className="inline-flex items-center gap-2 text-sm bg-orange-500/10 text-orange-300 px-4 py-1.5 rounded-full border border-orange-500/20">
+                <FiCalendar className="w-3 h-3" />
                 {period}
               </span>
-              <p className="text-gray-400 text-sm mt-2 flex items-center justify-end gap-2">
-                <FiMapPin />
+              {type && (
+                <span className="text-xs bg-gray-800/50 text-gray-400 px-3 py-1 rounded-full">
+                  {type}
+                </span>
+              )}
+              <p className="text-gray-500 text-sm flex items-center gap-1.5">
+                <FiMapPin className="w-3 h-3" />
                 {location}
               </p>
             </div>
@@ -580,15 +617,15 @@ function TimelineItem({
 
           {responsibilities && (
             <div>
-              <h4 className="text-gray-300 font-semibold mb-3 flex items-center gap-2">
-                <FiCheck className="text-orange-500" />
-                Responsibilities
+              <h4 className="text-gray-400 text-sm font-medium mb-3 flex items-center gap-2">
+                <FiCheck className="text-orange-400" />
+                Key Responsibilities
               </h4>
               <ul className="space-y-2">
                 {responsibilities.map((item, idx) => (
                   <li key={idx} className="flex items-start gap-3 group/item">
-                    <FiCheck className="text-green-500 mt-1 text-sm flex-shrink-0" />
-                    <span className="text-gray-400 group-hover/item:text-gray-300 transition-colors">
+                    <FiCheck className="text-green-400 mt-1 text-sm flex-shrink-0" />
+                    <span className="text-gray-400 text-sm group-hover/item:text-gray-300 transition-colors leading-relaxed">
                       {item}
                     </span>
                   </li>
