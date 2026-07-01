@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import profileImage from "./../img/liai.jpg";
+import profileImage from "./../../../public/img/aili.jpg";
 import Nav from "../Nav";
-import cv from "./../img/Lidia-yalewCV.pdf";
+import cv from "./../../../public/img/Lidia-YalewCV.pdf";
+import lid from "../../assets/lid.png"
 
 const AboutMe = () => {
   const [loaded, setLoaded] = useState(false);
@@ -35,7 +36,7 @@ const AboutMe = () => {
 
                 {/* Main image */}
                 <img
-                  src={profileImage}
+                  src={lid}
                   alt="Profile"
                   className="relative rounded-lg w-50 h-60 md:w-67 md:h-80 object-cover border-2 border-orange-500 shadow-lg transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-orange-500/30 group-hover:rotate-1"
                 />
@@ -63,12 +64,7 @@ const AboutMe = () => {
             About Me
           </h1>
           <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-            Highly motivated technology enthusiast with solid web development
-            skills and growing expertise in project coordination. Experienced in
-            leading and developing full-stack projects using React.js and
-            Node.js. A fast learner with a strong passion for problem-solving,
-            teamwork, and delivering smart digital solutions. Currently
-            expanding skills through Azure DevOps training.
+           Frontend-focused full-stack developer with hands-on experience building production-ready web applications using React.js, Node.js, and PostgreSQL. Recently built a complete consultancy website and rastaurant with an admin dashboard, including authentication, notifications, and dynamic content management. Strong problem-solver who enjoys debugging tricky UI and state-management issues. Currently expanding my DevOps knowledge through Azure DevOps training to better understand the full software delivery lifecycle.
           </p>
 
           <a

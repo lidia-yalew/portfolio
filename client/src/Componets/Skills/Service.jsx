@@ -19,6 +19,7 @@ import {
   FiServer,
   FiDatabase,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 // Extracted constants
 const services = [
@@ -26,11 +27,6 @@ const services = [
     icon: <FiCode className="text-3xl" />,
     title: "Web Development",
     desc: "Building full-stack websites using modern technologies.",
-  },
-  {
-    icon: <FiSmartphone className="text-3xl" />,
-    title: "Mobile App Development",
-    desc: "Creating intuitive mobile applications for Android.",
   },
   {
     icon: <FiLayout className="text-3xl" />,
@@ -49,10 +45,10 @@ const frontendSkills = [
 ];
 
 const backendSkills = [
-  { name: "PHP", level: 60, icon: <FiServer /> },
-  { name: "Node.js", level: 85, icon: <FiServer /> },
+  { name: "PHP", level: 50, icon: <FiServer /> },
+  { name: "Node.js", level: 80, icon: <FiServer /> },
   { name: "MySQL", level: 70, icon: <FiDatabase /> },
-  { name: "MongoDB", level: 70, icon: <FiDatabase /> },
+  { name: "postgress", level: 75, icon: <FiDatabase /> },
 ];
 
 const softSkills = [
@@ -73,8 +69,7 @@ const workExperience = [
     responsibilities: [
       "ERP System Trainer & Support Specialist: Conduct training sessions for employees on ERP software usage.",
       "Technical Support: Provide ongoing assistance and troubleshooting for ERP-related issues.",
-      "Project Coordination Support: Assist in planning, documentation, and coordination of digital projects.",
-      "User Documentation: Create and update user manuals and guides for ERP processes.",
+      "Project Coordination Support: Assist in planning, and coordination of digital projects.",
       "Cross-Functional Liaison: Facilitate communication between technical and non-technical teams.",
     ],
   },
@@ -87,18 +82,17 @@ const workExperience = [
     responsibilities: [
       "Train and mentor female students in web development and real-world project execution.",
       "Deliver lessons on React.js, Node.js, Git, and modern software development practices.",
-      "Supervise student projects, guiding teams through coding, documentation, and deployment.",
       "Demonstrate leadership, teamwork, and strong communication in a collaborative learning environment.",
     ],
   },
   {
     id: "experience-freelance",
     title: "Full-Stack Web Developer",
-    company: "Personal Projects",
+    company: "Personal Projects and clients projects",
     period: "2023 -- Present",
     location: "Remote",
     responsibilities: [
-      "Develop full-stack applications using React.js, Node.js, Express, MySQL/MongoDB, and Tailwind CSS.",
+      "Develop full-stack applications using React.js, Node.js, Express, MySQL/pg, and Tailwind CSS.",
       "Design responsive UI/UX interfaces and build backend APIs with authentication.",
       "Use Git and GitHub for version control and apply clean, modern coding practices.",
       "Create complete applications such as dashboards, user management systems, and portfolio sites.",
@@ -123,36 +117,7 @@ const education = [
   },
 ];
 
-const certificates = [
-  {
-    id: "cert-react",
-    title: "React Frontend Development",
-    issuer: "Coursera",
-    year: "2024",
-    icon: <FiAward />,
-  },
-  {
-    id: "cert-node",
-    title: "Node.js Backend Development",
-    issuer: "Udemy",
-    year: "2024",
-    icon: <FiAward />,
-  },
-  {
-    id: "cert-appreciation",
-    title: "Certificate of Appreciation",
-    issuer: "Wollo University Student Union (KIOT)",
-    year: "",
-    icon: <FiAward />,
-  },
-  {
-    id: "cert-experience",
-    title: "Experience Certificate",
-    issuer: "App Factory Academy (Wollo University)",
-    year: "",
-    icon: <FiAward />,
-  },
-];
+
 
 const Services = () => {
   const [activeTab, setActiveTab] = useState("skills");
@@ -419,44 +384,7 @@ function EducationTab({ animate }) {
         ))}
       </div>
 
-      {/* Certificates Section */}
-      <div
-        className={`mt-12 transform transition-all duration-1000 delay-1200 ${
-          animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`}
-      >
-        <h3 className="text-2xl font-bold mb-6">
-          <span className="bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
-            Certificates
-          </span>
-        </h3>
-        <div className="grid gap-4 md:grid-cols-2">
-          {certificates.map((cert, index) => (
-            <div
-              key={cert.id}
-              className={`bg-gradient-to-br from-gray-900/50 to-gray-900/20 p-5 rounded-xl border border-gray-800 hover:border-orange-500/50 transition-all duration-500 hover:scale-105 hover:shadow-lg hover:shadow-orange-500/10 transform ${
-                animate
-                  ? "translate-y-0 opacity-100"
-                  : "translate-y-10 opacity-0"
-              }`}
-              style={{ transitionDelay: `${1400 + index * 100}ms` }}
-            >
-              <div className="flex items-center gap-4">
-                <div className="text-orange-500">{cert.icon}</div>
-                <div className="flex-1">
-                  <h4 className="font-semibold text-white">{cert.title}</h4>
-                  <p className="text-orange-300/80 text-sm mt-1">
-                    {cert.issuer}
-                  </p>
-                  {cert.year && (
-                    <p className="text-gray-400 text-xs mt-1">{cert.year}</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+      
     </div>
   );
 }
@@ -481,7 +409,7 @@ function ServicesSection({ animate }) {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (
             <div
               key={index}
@@ -535,8 +463,8 @@ function ContactSection({ animate }) {
           Have a project in mind? I'd love to hear about it. Send me a message
           and let's create something amazing.
         </p>
-        <a
-          href="mailto:eskedaerya@gmail.com"
+        <Link
+          to="/contact"
           className="group relative inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-bold rounded-full hover:shadow-2xl hover:shadow-orange-500/40 hover:scale-105 transition-all duration-500 overflow-hidden"
         >
           <span className="relative z-10 flex items-center gap-3">
@@ -544,7 +472,7 @@ function ContactSection({ animate }) {
             Get In Touch
           </span>
           <span className="absolute inset-0 bg-gradient-to-r from-orange-600 to-amber-700 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500"></span>
-        </a>
+        </Link>
       </div>
     </div>
   );

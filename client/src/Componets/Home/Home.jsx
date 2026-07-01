@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import profileImage from "./../img/aili.jpg";
+import profileImage from "./../../../public/img/liai.jpg";
 import Nav from "../Nav";
+
 
 const Home = () => {
   const [loaded, setLoaded] = useState(false);
@@ -20,7 +21,7 @@ const Home = () => {
           {/* LEFT TEXT */}
           <div className="space-y-4 text-center md:text-left">
             <p className="text-orange-400 text-lg font-semibold">
-              Fullstack Developer
+              frontend Developer
             </p>
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -48,7 +49,7 @@ const Home = () => {
                 <img
                   src={profileImage}
                   alt="Lidia Yalew"
-                  className="w-[95%] max-w-[380px] md:max-w-[450px] object-contain rounded-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:rotate-1 group-hover:shadow-2xl group-hover:shadow-orange-500/20"
+                  className="w-[85%] max-w-[380px] md:max-w-[450px] object-contain rounded-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:rotate-1 group-hover:shadow-2xl group-hover:shadow-orange-500/20"
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(251, 146, 60, 0.15))",
                   }}
