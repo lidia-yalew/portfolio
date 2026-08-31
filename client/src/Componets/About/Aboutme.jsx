@@ -38,6 +38,8 @@ const AboutMe = () => {
                 <img
                   src={lid}
                   alt="Profile"
+                  loading="lazy"
+                  decoding="async"
                   className="relative rounded-lg w-50 h-60 md:w-67 md:h-80 object-cover border-2 border-orange-500 shadow-lg transform transition-all duration-500 group-hover:scale-105 group-hover:shadow-2xl group-hover:shadow-orange-500/30 group-hover:rotate-1"
                 />
 

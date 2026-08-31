@@ -41,16 +41,12 @@ const services = [
 ];
 
 const frontendSkills = [
-  { name: "HTML", level: 85, icon: <FiCode />, color: "from-orange-400 to-orange-600" },
-  { name: "CSS", level: 95, icon: <FiCode />, color: "from-blue-400 to-blue-600" },
-  { name: "Bootstrap", level: 70, icon: <FiCode />, color: "from-purple-400 to-purple-600" },
-  { name: "TailwindCSS", level: 90, icon: <FiCode />, color: "from-cyan-400 to-cyan-600" },
-  { name: "JavaScript", level: 95, icon: <FiCode />, color: "from-yellow-400 to-yellow-600" },
   { name: "React", level: 96, icon: <FiCode />, color: "from-sky-400 to-blue-600" },
+   { name: "Next Js", level: 90, icon: <FiCode />, color: "from-sky-400 to-blue-600" },
+    { name: "TailwindCSS", level: 90, icon: <FiCode />, color: "from-cyan-400 to-cyan-600" },
 ];
 
 const backendSkills = [
-  { name: "PHP", level: 50, icon: <FiServer />, color: "from-indigo-400 to-indigo-600" },
   { name: "Node.js", level: 80, icon: <FiServer />, color: "from-green-400 to-green-600" },
   { name: "MySQL", level: 70, icon: <FiDatabase />, color: "from-blue-400 to-blue-600" },
   { name: "PostgreSQL", level: 75, icon: <FiDatabase />, color: "from-sky-400 to-sky-600" },
@@ -59,7 +55,6 @@ const backendSkills = [
 const softSkills = [
   { name: "Communication", level: 100, icon: <FiUsers />, color: "from-pink-400 to-rose-500" },
   { name: "Adaptability", level: 99, icon: <FiTrendingUp />, color: "from-teal-400 to-teal-600" },
-  { name: "Confidence", level: 99, icon: <FiTarget />, color: "from-red-400 to-red-600" },
   { name: "Fast Learner", level: 99, icon: <FiZap />, color: "from-yellow-400 to-amber-600" },
 ];
 
@@ -131,7 +126,6 @@ const Services = () => {
   const [activeTab, setActiveTab] = useState("skills");
   const [isLoading] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
-  const [skillFilter, setSkillFilter] = useState("all");
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
@@ -187,18 +181,11 @@ const Services = () => {
       </div>
 
       {/* Hero Section */}
-      <div className="relative px-4 md:px-16 pt-32 pb-16">
+      <div className="relative px-4 md:px-16 pt-6">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-orange-500/10 border border-orange-500/20 rounded-full px-4 py-2 mb-6">
-            <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse"></span>
-            <span className="text-orange-400 text-sm font-medium">Available for hire</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-transparent">
+          <h1 className="text-xl md:text-3xl font-bold mb-6 bg-gradient-to-r from-white via-white to-orange-300 bg-clip-text text-orange-500">
             My Skills & Experience
           </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            A showcase of my technical expertise, professional journey, and educational background
-          </p>
         </div>
       </div>
 
@@ -240,11 +227,7 @@ const Services = () => {
             }`}
           >
             {activeTab === "skills" && (
-              <SkillsTab
-                skillFilter={skillFilter}
-                setSkillFilter={setSkillFilter}
-                animate={animate}
-              />
+              <SkillsTab animate={animate} />
             )}
             {activeTab === "experience" && <ExperienceTab animate={animate} />}
             {activeTab === "education" && <EducationTab animate={animate} />}
@@ -273,82 +256,29 @@ const Services = () => {
 };
 
 // Skills Tab Component
-function SkillsTab({ skillFilter, setSkillFilter, animate }) {
-  const filterButtons = [
-    { id: "all", label: "All Skills", icon: <FiStar className="w-3 h-3" /> },
-    { id: "frontend", label: "Frontend", icon: <FiCode className="w-3 h-3" /> },
-    { id: "backend", label: "Backend", icon: <FiServer className="w-3 h-3" /> },
-    { id: "soft", label: "Soft Skills", icon: <FiUsers className="w-3 h-3" /> },
-  ];
-
+function SkillsTab({ animate }) {
   return (
     <div>
-      {/* Skill Filter Buttons */}
-      <div
-        className={`flex justify-center gap-3 mb-12 flex-wrap transform transition-all duration-1000 delay-500 ${
-          animate ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`}
-      >
-        {filterButtons.map((filter) => (
-          <button
-            key={filter.id}
-            className={`group relative px-5 py-2.5 rounded-xl text-sm font-medium transition-all duration-500 flex items-center gap-2 ${
-              skillFilter === filter.id
-                ? "bg-gradient-to-r from-orange-500 to-amber-600 text-white shadow-lg shadow-orange-500/20"
-                : "bg-gray-900/50 text-gray-400 hover:text-white border border-gray-800 hover:border-orange-500/50 hover:bg-gray-800/50"
-            }`}
-            onClick={() => setSkillFilter(filter.id)}
-          >
-            {filter.icon}
-            {filter.label}
-          </button>
-        ))}
+      <div className="grid gap-8 md:grid-cols-3">
+        <SkillSection
+          title="Frontend"
+          skills={frontendSkills}
+          animate={animate}
+          delay={800}
+        />
+        <SkillSection
+          title="Backend"
+          skills={backendSkills}
+          animate={animate}
+          delay={900}
+        />
+        <SkillSection
+          title="Soft Skills"
+          skills={softSkills}
+          animate={animate}
+          delay={1000}
+        />
       </div>
-
-      {skillFilter === "all" ? (
-        <div className="grid gap-8 md:grid-cols-3">
-          <SkillSection
-            title="Frontend"
-            skills={frontendSkills}
-            animate={animate}
-            delay={800}
-          />
-          <SkillSection
-            title="Backend"
-            skills={backendSkills}
-            animate={animate}
-            delay={900}
-          />
-          <SkillSection
-            title="Soft Skills"
-            skills={softSkills}
-            animate={animate}
-            delay={1000}
-          />
-        </div>
-      ) : (
-        <div className="max-w-2xl mx-auto">
-          <SkillSection
-            title={
-              skillFilter === "frontend"
-                ? "Frontend Skills"
-                : skillFilter === "backend"
-                ? "Backend Skills"
-                : "Soft Skills"
-            }
-            skills={
-              skillFilter === "frontend"
-                ? frontendSkills
-                : skillFilter === "backend"
-                ? backendSkills
-                : softSkills
-            }
-            showAll={true}
-            animate={animate}
-            delay={800}
-          />
-        </div>
-      )}
     </div>
   );
 }

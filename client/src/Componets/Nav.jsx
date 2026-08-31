@@ -1,8 +1,24 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const navLinks = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Skills", path: "/skill" },
+    { name: "Portfolio", path: "/portfolio" },
+    { name: "Contact", path: "/contact" },
+  ];
+
+  const isActive = (path) => {
+    if (path === "/") {
+      return location.pathname === "/" || location.pathname === "/home";
+    }
+    return location.pathname === path;
+  };
 
   return (
     <nav
@@ -11,14 +27,16 @@ function Nav() {
       fixed top-0 left-0 z-50 pt-7"
     >
       {/* Logo */}
-      <div className="text-2xl font-bold text-orange-400">Lidia.</div>
+      <Link to="/" className="text-2xl font-bold text-orange-400">
+        Lidia.
+      </Link>
 
       {/* Hamburger (Mobile Only) */}
       <div
         className="text-3xl cursor-pointer md:hidden text-white"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        ☰
+        {menuOpen ? "✕" : "☰"}
       </div>
 
       {/* Navigation Links */}
@@ -32,55 +50,27 @@ function Nav() {
               : "opacity-0 h-0 overflow-hidden md:h-auto"
           }`}
       >
-        <li className="md:ml-8 my-3 md:my-0">
-          <Link
-            className="hover:text-orange-400 text-white"
-            to="/"
-            onClick={() => setMenuOpen(false)}
-          >
-            Home
-          </Link>
-        </li>
-
-        <li className="md:ml-8 my-3 md:my-0">
-          <Link
-            className="hover:text-orange-400 text-white"
-            to="/about"
-            onClick={() => setMenuOpen(false)}
-          >
-            About
-          </Link>
-        </li>
-
-        <li className="md:ml-8 my-3 md:my-0">
-          <Link
-            className="hover:text-orange-400 text-white"
-            to="/skill"
-            onClick={() => setMenuOpen(false)}
-          >
-            Skills
-          </Link>
-        </li>
-
-        <li className="md:ml-8 my-3 md:my-0">
-          <Link
-            className="hover:text-orange-400 text-white"
-            to="/portfolio"
-            onClick={() => setMenuOpen(false)}
-          >
-            Portfolio
-          </Link>
-        </li>
-
-        <li className="md:ml-8 my-3 md:my-0">
-          <Link
-            className="hover:text-orange-400 text-white"
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact
-          </Link>
-        </li>
+        {navLinks.map((link) => {
+          const active = isActive(link.path);
+          return (
+            <li key={link.path} className="md:ml-8 my-3 md:my-0 text-center md:text-left">
+              <Link
+                to={link.path}
+                onClick={() => setMenuOpen(false)}
+                className={`relative py-1 transition-colors duration-300 inline-block ${
+                  active
+                    ? "text-orange-400 font-semibold"
+                    : "text-gray-300 hover:text-orange-400"
+                }`}
+              >
+                {link.name}
+                {active && (
+                  <span className="absolute bottom-0 left-0 w-full h-[2px] bg-orange-400 rounded-full shadow-[0_0_8px_rgba(251,146,60,0.8)]"></span>
+                )}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

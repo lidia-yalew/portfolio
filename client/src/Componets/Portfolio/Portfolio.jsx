@@ -45,7 +45,7 @@ const Portfolio = () => {
     client: "Client Based Project",
     liveDemo: "https://restaurant-management-system.web.app", // ← Replace with actual deployed URL
     image: restoImage, // ← Import your image
-    isDeployed: true,
+    isDeployed: false,
   },
 
   // 2. TIBEB CONSULTANCY PLC - Full Stack
@@ -78,7 +78,7 @@ const Portfolio = () => {
     client: "Tibeb Consultancy PLC",
     liveDemo: "https://tibeb-consultancy.web.app",
     image: tibebImage, // ← Import your image
-    isDeployed: true,
+    isDeployed: false,
   },
 // 8. MARIA TRESA CONSULTANCY - Static Website
   {
@@ -157,7 +157,7 @@ const Portfolio = () => {
     client: "Personal Project",
     liveDemo: "https://ethiozon-ecommerce.web.app",
     image: "https://via.placeholder.com/600x400/C9A84C/1A237E?text=Ethiozon",
-    isDeployed: true,
+    isDeployed: false,
   },
 
   // 6. Netflix Clone
@@ -216,10 +216,10 @@ const Portfolio = () => {
       <Nav />
 
       {/* Portfolio Header */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6">
         {/* Header with animated underline */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-orange-500 mb-4 inline-block relative">
+          <h1 className="text-4xl md:text-2xl font-bold text-orange-500 mb-4 inline-block relative">
             My Projects
             <span className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full"></span>
           </h1>
@@ -245,6 +245,8 @@ const Portfolio = () => {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   onError={(e) => {
                     e.target.style.display = "none";
@@ -292,7 +294,7 @@ const Portfolio = () => {
 
                 {/* Quick action buttons on hover */}
                 <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <a
+                  {/* <a
                     href={project.liveDemo}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -302,7 +304,7 @@ const Portfolio = () => {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>
                     Live Demo
-                  </a>
+                  </a>*/}
                   <a
                     href={project.link}
                     target="_blank"

@@ -49,6 +49,9 @@ const Home = () => {
                 <img
                   src={profileImage}
                   alt="Lidia Yalew"
+                  loading="eager"
+                  decoding="async"
+                  fetchPriority="high"
                   className="w-[85%] max-w-[380px] md:max-w-[450px] object-contain rounded-2xl transform transition-all duration-700 group-hover:scale-105 group-hover:rotate-1 group-hover:shadow-2xl group-hover:shadow-orange-500/20"
                   style={{
                     filter: "drop-shadow(0 20px 40px rgba(251, 146, 60, 0.15))",
